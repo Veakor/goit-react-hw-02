@@ -3,6 +3,7 @@ import Feedback from './components/Feedback/Feedback';
 import Options from './components/Options/Options';
 import Description from './components/Description/Description';
 
+
 const App = () => {
   const [feedback, setFeedback] = useState({
     good: 0,
@@ -25,5 +26,4 @@ const App = () => {
     </div>
   );
 }
-
 export default App;
