@@ -10,6 +10,13 @@ const App = () => {
     bad: 0
   });
 
+  const updateFeedback = feedbackType => {
+    setFeedback(prevFeedback => ({
+      ...prevFeedback,
+      [feedbackType]: prevFeedback[feedbackType] + 1
+    }));
+  };
+
   const onLeaveFeedback = option => {
     setFeedback(prevFeedback => ({
       ...prevFeedback,
@@ -28,19 +35,18 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Sip Happens Café</h1>
-      <p>Please leave your feedback about our service by selecting one of the options below.</p>
-      <Options onLeaveFeedback={onLeaveFeedback} />
-      {calculateTotalFeedback() === 0 ? (
-        <Discription message="No feedback yet" />
-      ) : (
-        <Feedback feedback={feedback} />
-      )}
-      <p>Total feedbacks: {calculateTotalFeedback()}</p>
-      <p>Positive feedback percentage: {calculatePositiveFeedbackPercentage()}%</p>
+    <div className="App">
+      <Description />
+      <Options updateFeedback={updateFeedback} />
+      <Feedback
+        good={feedback.good}
+        neutral={feedback.neutral}
+        bad={feedback.bad}
+        total={calculateTotalFeedback()}
+        positivePercentage={calculatePositiveFeedbackPercentage()}
+      />
     </div>
   );
-}
+};
 
 export default App;
