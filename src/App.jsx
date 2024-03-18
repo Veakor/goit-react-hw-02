@@ -30,12 +30,18 @@ const App = () => {
 
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const positiveFeedbackPercentage = Math.round(((feedback.good + feedback.neutral) / totalFeedback) * 100);
+  
 
   return (
     <div className="App">
       <Description />
       <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} resetFeedback={resetFeedback}  />
-      {totalFeedback > 0 ? <Feedback feedback={feedback} /> : <Notification />}
+      {totalFeedback > 0 ? (
+        <Feedback feedback={feedback} totalFeedback={totalFeedback} positiveFeedbackPercentage={positiveFeedbackPercentage} />
+      ) : (
+        <Notification />
+      )}
     </div>
   );
 }

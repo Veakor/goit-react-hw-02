@@ -4,7 +4,7 @@ import styles from './Feedback.module.css';
 
 
 
-const Feedback = ({ feedback }) =>{
+const Feedback = ({ feedback, totalFeedback, positiveFeedbackPercentage  }) =>{
   if (!feedback) return null; 
  return(
     <div>
@@ -12,6 +12,8 @@ const Feedback = ({ feedback }) =>{
       <p>Good: {feedback.good}</p>
       <p>Neutral: {feedback.neutral}</p>
       <p>Bad: {feedback.bad}</p>
+      <p>Total feedback: {totalFeedback}</p>
+    <p>Positive feedback percentage: {positiveFeedbackPercentage}%</p>
     </div>
   );
 }
