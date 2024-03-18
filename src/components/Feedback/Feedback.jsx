@@ -4,7 +4,9 @@ import styles from './Feedback.module.css';
 
 
 
-const Feedback = ({ feedback }) => (
+const Feedback = ({ feedback }) =>{
+  if (!feedback) return null; 
+ return(
     <div>
       <h2>Feedback statistics:</h2>
       <p>Good: {feedback.good}</p>
@@ -12,6 +14,6 @@ const Feedback = ({ feedback }) => (
       <p>Bad: {feedback.bad}</p>
     </div>
   );
-  
+}
   export default Feedback;
  

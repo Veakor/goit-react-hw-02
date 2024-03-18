@@ -18,6 +18,7 @@ const App = () => {
       [feedbackType]: prevFeedback[feedbackType] + 1
     }));
   };
+
   const resetFeedback = () => {
     setFeedback({
       good: 0,
@@ -33,8 +34,7 @@ const App = () => {
   return (
     <div className="App">
       <Description />
-      <Options updateFeedback={updateFeedback} resetFeedback={resetFeedback} totalFeedback={totalFeedback} />
-      { Notification }
+      <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} resetFeedback={resetFeedback}  />
       {totalFeedback > 0 ? <Feedback feedback={feedback} /> : <Notification />}
     </div>
   );
